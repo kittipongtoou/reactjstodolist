@@ -1,0 +1,31 @@
+.close {
+    padding-right: 15px;
+}
+.item_todo {
+    margin: 6px 10px 6px 0;
+  }
+
+.ul_custom{
+    margin-top: 10px;
+}
+
+.list-group-item{
+    margin-left: -40px;
+}
+.item_todo{
+    padding-left: 10px;
+}
+
+.item_todo{
+    padding-left: 20px;
+}
+.done {
+    color: #999;
+    text-decoration: line-through;
+  }
+
+.test{
+    outline: none;
+    border:none;
+}
+    
