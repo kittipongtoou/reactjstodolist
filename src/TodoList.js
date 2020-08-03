@@ -5,7 +5,7 @@ import { faTrash,faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function TodoApp() {
   const [data, setData] = useState({ todoitem: [] });
-  const [id, setId] = useState();
+
   useEffect(() => {
     gettodolist();
   }, []);
@@ -37,13 +37,16 @@ function TodoApp() {
     })
   }
 
-  const itemDone = (id) => {
-    axios.put(`https://todolisttest-heroku.herokuapp.com/todo/todolist/${id}`)
-    .then(res => {
-      gettodolist();
-    })
+  function doneToClass(status){
+    var doneClass = '';
+    if(status === 1) {
+      doneClass = 'done test';
+    }else{
+    doneClass = 'test';
+    }
+ 
+    return doneClass ;
   }
-
       return (
         <div className="card">
         <div className="card-body">
@@ -51,9 +54,10 @@ function TodoApp() {
             <input type="text" className="form-control" placeholder="Input task name then tap Enter add" onKeyPress={addItem}/>
             <ul className="ul_custom">
               {data.todoitem.map(item => (
-                <li className="list-group-item" key={item.id}>
+                <li className="list-group-item " key={item.id}>
                   <div className="item_todo ">
-                    <input type="checkbox" className="form-check-input " onClick={() => itemDone(item.id)}/> <input type="text" className="test" defaultValue={item.todolist_text}/>
+                    <input type="checkbox" className="form-check-input " defaultChecked={item.status}/>
+                    <label className={doneToClass(item.status)}>{item.todolist_text}</label>
                     <a className="close" onClick={() => deleteItem(item.id)}> <FontAwesomeIcon icon={faTrash}/></a>
                     <a className="close"> <FontAwesomeIcon icon={faPen} /></a>
                   </div>
