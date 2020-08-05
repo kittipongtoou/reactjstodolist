@@ -4,7 +4,7 @@ import axios from 'axios';
 import { faTrash,faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo, index, completeTodo, removeTodo}) {
   return (
     <div
       className="list-group-item"
@@ -13,14 +13,13 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       <input type="checkbox" className="check_box" defaultChecked={todo.isCompleted} onClick={() => completeTodo(index)}/>
       {todo.todolist_text}
       <a onClick={() => removeTodo(todo.id)} className="close"><FontAwesomeIcon icon={faTrash}/></a>
-      <a className="close"> <FontAwesomeIcon icon={faPen} /></a>
     </div>
   );
 }
 
 function TodoForm({ addTodo }) {
   const [value, setValue] = useState("");
-
+  
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
@@ -33,7 +32,7 @@ function TodoForm({ addTodo }) {
       <input
         type="text"
         className="form-control" placeholder="Input task name then tap Enter add"
-        value={value}
+        value={ value } 
         onChange={e => setValue(e.target.value)}
       />
     </form>
